@@ -87,7 +87,14 @@
         - run jmeter.bat
 
 ## services
+<p style="color: yellow"> WARNING </p>
+
+0. open `.env` file on the root of project
+    1. If your laptop has an Intel or Ryzen CPU, change `PLATFORM` parm to `linux/amd64`
+    2. If your laptop has M1 or newer chip, change `PLATFORM` parm to `linux/arm64`
+
 1. #### **docker-compose**
+
 - from root directory start docker-compose reservation_service
    ```bash
     docker-compose -f docker-compose.yml up -d 
