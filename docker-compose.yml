@@ -112,5 +112,18 @@ services:
     networks:
       - ${NETWORKS}
 
+  influxdb:
+    image: influxdb:1.8
+    restart: always
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      - INFLUXDB_DB=loadTestingDB
+      - INFLUXDB_ADMIN_USER=${INFLUXDB_USERNAME}
+      - INFLUXDB_ADMIN_PASSWORD=${INFLUXDB_PASSWORD}
+    networks:
+      - ${NETWORKS}
+
 volumes:
   db_data:
