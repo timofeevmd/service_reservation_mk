@@ -16,10 +16,32 @@
 
 
 ## install infrastructure
+0. The working directory throughout the entire master class will be located in the root directory of your user account if you are using a Unix-like system, or on drive C if you are using Windows. This is where we will place the cloned project.
+```bash
+mkdir ~/projects/ &&
+cd ~/projects/ &&
+git clone https://github.com/timofeevmd/service_reservation_mk.git
+```
+
+
 1. ### java
     1. #### **macOs**
-        - `brew install openjdk@11`
-    2. #### **linux**
+       ```bash
+       brew install openjdk@11
+       ```
+        - Expected result
+        ```bash
+        java --version
+        ```
+       Output
+        ```bash
+        openjdk 11.0.26 2025-01-21
+        OpenJDK Runtime Environment Homebrew (build 11.0.26+0)
+        OpenJDK 64-Bit Server VM Homebrew (build 11.0.26+0, mixed mode)
+       ```
+      troubleshooting
+      - if you had different java version, check the [link](https://stackoverflow.com/questions/21964709/how-to-set-or-change-the-default-java-jdk-version-on-macos) for switch between your jdk's 
+   2. #### **linux**
         - [manual](https://www.digitalocean.com/community/tutorials/how-to-install-java-on-centos-and-fedora)
         - if manual is not work
         - `wget https://builds.openlogic.com/downloadJDK/openlogic-openjdk/11.0.26+4/openlogic-openjdk-11.0.26+4-linux-64.tar.gz`
@@ -37,6 +59,19 @@
          export PATH=$JAVA_HOME/bin:$PATH
          ```
         - `source /etc/profile.d/java.sh`
+        - Expected result 
+        ```bash
+        java --version
+        ```
+        Output
+        ```bash
+        openjdk 11.0.26 2025-01-21
+        OpenJDK Runtime Environment Homebrew (build 11.0.26+0)
+        OpenJDK 64-Bit Server VM Homebrew (build 11.0.26+0, mixed mode)
+        ```
+      troubleshooting
+       - if you had different java version, check the [link](https://stackoverflow.com/questions/21964709/how-to-set-or-change-the-default-java-jdk-version-on-macos) for switch between your jdk's
+      
     3. #### **windows**
         - download [.zip](https://builds.openlogic.com/downloadJDK/openlogic-openjdk/11.0.26+4/openlogic-openjdk-11.0.26+4-windows-x64.zip)
         - Follow the installation wizard, keeping the default settings.
@@ -50,9 +85,31 @@
         - Set `%JAVA_HOME%\bin`
 2. ### maven
     1. [manual](https://www.baeldung.com/install-maven-on-windows-linux-mac#bd-installing-maven-on-mac-os-x) for macOs/linux/windows
+        - Expected result
+       ```bash
+       mvn --version
+       ```
+       Output
+       ```bash
+       Apache Maven 3.9.9 (8e8579a9e76f7d015ee5ec7bfcdc97d260186937)
+       Maven home: /opt/homebrew/Cellar/maven/3.9.9/libexec
+       Java version: 11.0.19, vendor: Oracle Corporation, runtime: /Library/Java/JavaVirtualMachines/jdk-11.jdk/Contents/Home
+       Default locale: en_US, platform encoding: UTF-8
+       OS name: "mac os x", version: "15.3.2", arch: "aarch64", family: "mac"
+       ```
 3. ### docker
     1. [manual](https://docs.docker.com/desktop/) for macOs/linux/windows
-
+    - Expected result
+        ```bash
+        docker --version &&
+        docker-compose --version
+        ```
+      Output like this
+        ```bash
+       Docker version 24.0.6, build ed223bc
+       Docker Compose version v2.23.0-desktop.1
+       ```
+    
    troubleshooting
     - Error permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.48/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
 
@@ -130,17 +187,6 @@
 - Concurrency Thread Group
 - Arrivals Thread Group
 - Plugin page: https://jmeter-plugins.org/?search=jpgc-casutg
----
-#### 2. Dummy Sampler
-- Find and install: `Dummy Sampler`
-- Useful to mock requests or test logic
-- Plugin page: https://jmeter-plugins.org/wiki/DummySampler/
----
-#### 3. Parallel Controller
-- Find and install: `Parallel Controller`  
-  (sometimes listed as `bzm - Parallel Controller`)
-- Plugin page: https://jmeter-plugins.org/?search=parallel
----
 
 ### 3. RESTART JMETER
 After installing plugins:
@@ -270,13 +316,9 @@ notice
 directory `report` must not be created before start the performance test
 
 ```bash
-source ~/tools/apache-jmeter-5.4.1/bin/jmeter \
--n -t /Path/to/your/test_plan/test_fragment/test_plan_based_on_test_fragments.jmx \
--j /Path/to/your/test_plan/test_fragment/jmeter.log \
--l /Path/to/your/test_plan/test_fragment/results.jtl \
--e -o /Users/michaeltimofeev/projects/service_reservation_doc/examples_docs/test_plan/test_fragment/report/
-```
-if you try to start test which based on `Test fragment` you must provide the special param
-```bash
--Jincludecontroller.prefix=./
+./jmeter \
+-n -t ~/projects/service_reservation_mk/docs/scenarious/max_throughput_final_scn.jmx \
+-j ~/projects/service_reservation_mk/docs/scenarious/jmeter.log \
+-l ~/projects/service_reservation_mk/docs/scenarious//results.jtl \
+-e -o ~/projects/service_reservation_mk/docs/scenarious/report/
 ```
