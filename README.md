@@ -73,16 +73,29 @@ git clone https://github.com/timofeevmd/service_reservation_mk.git
        - if you had different java version, check the [link](https://stackoverflow.com/questions/21964709/how-to-set-or-change-the-default-java-jdk-version-on-macos) for switch between your jdk's
       
     3. #### **windows**
-        - download [.zip](https://builds.openlogic.com/downloadJDK/openlogic-openjdk/11.0.26+4/openlogic-openjdk-11.0.26+4-windows-x64.zip)
-        - Follow the installation wizard, keeping the default settings.
-        - Note the installation path (usually C:\Program Files\Eclipse Adoptium\jdk-11 or C:\Program Files\Java\jdk-11).
+        - download [.zip](https://builds.openlogic.com/downloadJDK/openlogic-openjdk/11.0.26+4/openlogic-openjdk-11.0.26+4-windows-x64.zip) or [.msi](https://builds.openlogic.com/downloadJDK/openlogic-openjdk/11.0.26+4/openlogic-openjdk-11.0.26+4-windows-x64.msi) to use installation wizard
+        - Follow the installation wizard, choosing 'Set JAVA_HOME variable'
+        - Note the installation path (usually C:\Program Files\OpenLogic\jdk-11.0.26.4-hotspot\ or C:\Program Files\Java\jdk-11).
         - Open Control Panel → System → Advanced system settings.
         - Go to the Advanced tab and click Environment Variables.
         - Under System Variables
         - Find the `JAVA_HOME` variable (if it does not exist, click New)
-        - Set `JAVA_HOME=C:\Program Files\Eclipse Adoptium\jdk-11`
+        - Set `JAVA_HOME=C:\Program Files\OpenLogic\jdk-11.0.26.4-hotspot\`
         - Find Path → click Edit → New
         - Set `%JAVA_HOME%\bin`
+
+       - Expected result
+        ```bash
+        java --version
+        ```
+       Output
+        ```bash
+        openjdk 11.0.26 2025-01-21
+        OpenJDK Runtime Environment OpenLogic-OpenJDK (build 11.0.26+4-adhoc..jdk11u)
+        OpenJDK 64-Bit Server VM OpenLogic-OpenJDK (build 11.0.26+4-adhoc..jdk11u, mixed mode)
+       ```
+       troubleshooting
+        - if you had different java version, check the [link](https://stackoverflow.com/questions/26993101/switching-between-different-jdk-versions-in-windows) for switch between your jdk's
 2. ### maven
     1. [manual](https://www.baeldung.com/install-maven-on-windows-linux-mac#bd-installing-maven-on-mac-os-x) for macOs/linux/windows
         - Expected result
