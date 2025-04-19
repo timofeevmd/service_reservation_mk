@@ -146,13 +146,13 @@ git clone https://github.com/timofeevmd/service_reservation_mk.git
        ```bash
        mkdir ~/tools/ &&
        cd ~/tools/ &&
-       wget https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.1.tgz &&
+       wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.1.tgz &&
        tar -xvzf apache-jmeter-5.4.1.tgz &&
        cd ./apache-jmeter-5.4.1/bin/ &&
        ./jmeter
        ```
     3. **windows**
-        - downloads [.zip](https://dlcdn.apache.org//jmeter/binaries/apache-jmeter-5.4.1.zip)
+        - downloads [.zip](https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.4.1.zip)
         - unzip .zpi arch
         - run jmeter.bat
 
